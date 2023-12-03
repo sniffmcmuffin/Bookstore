@@ -29,7 +29,8 @@ namespace Bookstore.Services
 
         private void DisplayLogo() // Skoj
         {
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logo.txt");
+            //  string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logo.txt");
+            string filePath = "../../../logo.txt";
 
             Console.OutputEncoding = System.Text.Encoding.UTF8; // Set console encoding
 
@@ -53,7 +54,8 @@ namespace Bookstore.Services
 
         private void DisplayMenu()
         {
-            Console.WriteLine("Simple Console Menu");
+            Console.WriteLine("Ye Olde Boookshoppe Menu");
+            Console.WriteLine("------------------------");
             Console.WriteLine("1. Add Book");
             Console.WriteLine("2. List Books");
             Console.WriteLine("3. Exit");
