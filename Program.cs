@@ -7,9 +7,11 @@
 using Bookstore.Services;
 
 class Program
-{
+{    
     static void Main()
     {
+        Console.WindowWidth = 150; // För loggan.
+
         var bookService = new BookService(); // Skapa en instans iom det är objektorienterad. Tog lång tid lista ut felet.
         var storeMenu = new StoreMenu(bookService); // Skapar en instans av menyn.
                

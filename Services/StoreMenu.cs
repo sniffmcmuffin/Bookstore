@@ -18,6 +18,7 @@ namespace Bookstore.Services
             while (true)
             {
                 Console.Clear();
+                DisplayLogo();
                 DisplayMenu();
                 string? userInput = Console.ReadLine();
                 MenuOptions(userInput);
@@ -25,6 +26,30 @@ namespace Bookstore.Services
                 Console.ReadKey();
             }
         }
+
+        private void DisplayLogo() // Skoj
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logo.txt");
+
+            Console.OutputEncoding = System.Text.Encoding.UTF8; // Set console encoding
+
+            if (File.Exists(filePath))
+            {
+                string[] lines = File.ReadAllLines(filePath);
+
+                Console.WriteLine("Contents of the text file:\n");
+
+                foreach (string line in lines)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+            else
+            {
+                Console.WriteLine("The specified file does not exist.");
+            }
+        }
+
 
         private void DisplayMenu()
         {

@@ -12,20 +12,6 @@ public class BookService
        
     public void AddBook()  // Lägg till en ny bok i listan
     {
-        // Exempel 1
-        // var book = new Book("hejsavens", "jimmy", 75685686);
-        // Exempel 2
-        // var book_2 = new Book
-        // {
-        //   Title = "sdfsgg",
-        //  Author = "sgdfgdfgdfd",A
-        //  Isbn = 3536356
-        // };    
-
-        // var bookService = new BookService();
-        // bookService.Add();
-
-
         var book = new DetailedBook();
 
         Console.WriteLine("Ange bokens titel: ");
