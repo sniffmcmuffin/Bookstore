@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Bookstore.Interfaces;
 
 namespace Bookstore.Models;
 
@@ -14,11 +15,24 @@ public class Book
     {
         Title = title;
         Author = author;
-        Isbn = isbn;    
+        Isbn = isbn;
     }
-    public string Title { get; set; } 
+    public string Title { get; set; }
     public string Author { get; set; }
-    public int Isbn { get; set; } // Samma sak som id
+    public int Isbn { get; set; } // Samma sak som id  
+}
+
+public class BasicBook : IBook
+{
+    public string Title { get; set; } = null!;
+}
+
+public class DetailedBook : IBook
+{
+    public string Title { get; set; } = null!;
+    public string Author { get; set; } = null!;
+    public string Type { get; set; } = null!;
+    public int Isbn { get; set; }
 }
 
 

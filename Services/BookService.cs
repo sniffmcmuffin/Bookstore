@@ -1,12 +1,14 @@
 ﻿using System;
 using Bookstore.Models;
+using Bookstore.Interfaces;
+using static Bookstore.Models.Book;
 
 namespace Bookstore.Services;
 
 public class BookService
 {
     // Deklarera listan med böcker
-    private List<Book> bookList = new List<Book>();
+    private List<IBook> bookList = new List<IBook>();
        
     public void AddBook()  // Lägg till en ny bok i listan
     {
@@ -24,7 +26,7 @@ public class BookService
         // bookService.Add();
 
 
-        var book = new Book();
+        var book = new DetailedBook();
 
         Console.WriteLine("Ange bokens titel: ");
         string? titleInput = Console.ReadLine();
@@ -48,12 +50,23 @@ public class BookService
             Console.WriteLine("Du måste fylla i något.");
         }
 
+        Console.WriteLine("Ange typ av bok: ");
+        string? typeInput = Console.ReadLine();
+        if (!string.IsNullOrWhiteSpace(typeInput))
+        {
+            book.Type = typeInput;
+        }
+        else
+        {
+            Console.WriteLine("Välj något av lånebok/ljudbok/ebok/faktabok/skönlitteratur");
+        }
+
         Console.WriteLine("Ange ISBN nummer: ");
 
         if (int.TryParse(Console.ReadLine(), out int isbn))
         {
+   
             book.Isbn = isbn;
-            // AddBook();
             bookList.Add(book); // Lägg till boken i listan.
             Console.WriteLine("Book added successfully.");
         }
@@ -63,11 +76,16 @@ public class BookService
     {
         var count = bookList.Count;
 
-        Console.WriteLine($"List of Books\n=-=-=-=-=-=-=\nThere are {count} books in store:\n\n");
-       
+        Console.WriteLine($"List of Books\n=-=-=-=-=-=-=\nThere are {count} books in store:\n");
+
         foreach (var b in bookList)
         {
-            Console.WriteLine($"Title: {b.Title}, Author: {b.Author}, ISBN: {b.Isbn}");
+            Console.WriteLine($"Title: {b.Title}");
+
+            if (b is DetailedBook detailedBook)
+            {
+                Console.WriteLine($"Author: {detailedBook.Author}, Type: {detailedBook.Type}, ISBN: {detailedBook.Isbn}");
+            }
         }
     }
 }
